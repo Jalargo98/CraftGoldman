@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.contrib.auth import authenticate, login
 from Productos.models import CustomUser as User
 
 # Create your views here.
@@ -9,6 +10,12 @@ def index(request):
   pass
 
 def autenticacion(request):
+  if request.method == 'POST':
+    user = authenticate(request,email=request.POST.get('email'),password=request.POST.get('password'))
+    print(f'user == {user}')
+    if user is not None:
+            login(request, user)
+            return redirect('index')
   return render(request, 'autenticacion.html', {})
 
 def registro(request):

@@ -17,11 +17,25 @@
       <font style="vertical-align: inherit;">Políticas de la tienda</font>
     </font>
   </a>
+  {% if user.is_authenticated %}
+  <div class="ui compact menu">
+    <div class="ui simple dropdown item">
+      {{user.first_name}}
+      <i class="dropdown icon"></i>
+      <div class="menu">
+        <div class="item">Choice 1</div>
+        <div class="item">Choice 2</div>
+        <div class="item">Choice 3</div>
+      </div>
+    </div>
+  </div>
+  {% else %}
   <a href="{% url 'autenticacion' %}" class="ui black basic button large">
     <font style="vertical-align: inherit;">
       <font style="vertical-align: inherit;">Registrarse</font>
     </font>
   </a>
+  {% endif %}
   <div class="buycar">
     <div class="ui icon top left pointing dropdown button" style="background-color: transparent!important">
       <i class="shopping cart icon"></i>

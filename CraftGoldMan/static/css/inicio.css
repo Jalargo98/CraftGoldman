@@ -103,7 +103,7 @@ div.item.resize{
   display: flex !important;
 }
 
-div div.menu.transition.visible{
+div.ui.icon.top div.menu.transition.visible{
   width: 400px!important;
   left: -200px!important;
   min-height: 150px !important;
