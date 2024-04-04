@@ -1,0 +1,25 @@
+{% extends "admin/layouts/base.html" %}
+{% load static %}
+{% block title %}Subcategoria Create{% endblock title %}
+{% block main %}
+  <i class="bars icon"></i>
+  <h1 style="font-size: 50px;">Creacion de SubCategorias</h1>
+  <div style="width: 100%;display: flex;flex-direction: column;align-content: center;">
+    <form action="" class="ui form" method="POST">
+      {% csrf_token %}
+      <div class="field">
+        <label for="">Nombre:</label>
+        <input type="text" required name="nombre" placeholder="Nombre de la subcategoria" maxlength="30" value="{% if subcategoria %}{{subcategoria.nombre}}{% endif %}">
+      </div>
+      <div class="field">
+        <label for="">Categoria:</label>
+        <select type="text" required name="categoria" placeholder="Categoria de la subcategoria" maxlength="40" value="{% if subcategoria %}{{subcategoria.categoria.id}}{% endif %}">
+          {% for cat in categorias %}
+          <option value="{{cat.id}}" {% if subcategoria.categoria == cat %}selected{% endif %}>{{cat.nombre}}</option>            
+          {% endfor %}
+        </select>
+      </div>
+      <button class="ui button" type="submit">Submit</button>
+    </form>
+  </div>
+{% endblock main %}

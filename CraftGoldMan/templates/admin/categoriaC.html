@@ -8,11 +8,11 @@
     <form action="" class="ui form" method="POST">
       {% csrf_token %}
       <div class="field">
-        <label for=""></label>
+        <label for="">Nombre:</label>
         <input type="text" required name="nombre" placeholder="Nombre de la categoria" maxlength="30" value="{% if categoria %}{{categoria.nombre}}{% endif %}">
       </div>
       <div class="field">
-        <label for=""></label>
+        <label for="">Descripcion:</label>
         <input type="text" required name="descripcion" placeholder="Descripcion de la categoria" maxlength="40" value="{% if categoria %}{{categoria.descripcion}}{% endif %}">
       </div>
       <button class="ui button" type="submit">Submit</button>

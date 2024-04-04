@@ -1,0 +1,32 @@
+{% extends "admin/layouts/base.html" %}
+{% load static %}
+{% block title %}Lista de Subcategoria{% endblock title %}
+{% block main %}
+<i class="bars icon"></i>
+<h1 style="font-size: 50px;">Ver lista de subcategorias</h1>
+<div style="width: 100%;display: flex;flex-direction: column;align-content: center;">
+  <table class="ui inverted yellow table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>Categoria</th>
+        <th>Modificar</th>
+      </tr>
+    </thead>
+    {% for cat in subcategorias %}
+    <tbody>
+      <tr>
+        <td>{{cat.id}}</td>
+        <td>{{cat.nombre}}</td>
+        <td>{{cat.categoria}}</td>
+        <td><a href="{% url 'admin:subcategoriaU' cat.id %}"><i class="pencil icon" style="color: white;"></i></a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+  <div style="text-align: center; width: 100%;margin-top: 60px;">
+    <button class="ui yellow button" onclick="window.location.href = '/admin/subcategoria/create/';">Crear una subcategoria</button>
+  </div>
+</div>
+{% endblock main %}
