@@ -19,8 +19,5 @@ from django.urls import path,include
 from . views import *
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('', index, name='index'),
-    path('producto/',include(('Productos.urls','product'),namespace='product'), name="product"),
-    path('autenticacion/', autenticacion, name="autenticacion"),
+    path('tienda', tienda, name='tienda'),
 ]

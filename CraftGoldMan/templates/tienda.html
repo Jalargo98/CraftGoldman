@@ -1,0 +1,38 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %}Login{% endblock title %}
+{% block style %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+{% endblock style %}
+{% block main %}
+<div class="ui container">
+  <div class="ui three stackable cards">
+    <!--Aqii comienza el for de los productos -->
+    <div class="card">
+      <div class="image">
+        <img src="{% static 'img/tienda/bolsos/bolso1.avif' %}" width="180%">
+      </div>
+      <div class="content">
+        <a class="header"> Corazon Inca</a>
+        <div class="meta">
+          <span class="date">Categoría: Bolso</span>
+        </div>
+        <div class="description">
+          Hermoso bolso de paja con esencia de la cultura inca
+        </div>
+      </div>
+      <div class="extra content">
+        <span class="price">$20000 COP</span>
+        <button class="ui yellow button">agregar al carrito</button>
+        <input type="number" name="cantidad" min="1" max="100" style="height: 40px; width: 20%;">
+      </div>
+    </div>
+    <!--Aqii finaliza el for de los productos -->
+  </div>
+</div>
+{% endblock main %}
+{% block scripts %}
+<script  src="{% static 'js/script.js' %}"></script>
+{% endblock scripts %}

@@ -1,0 +1,135 @@
+.custom-menu .ui.basic.button {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.custom-menu {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.custom-menu .ui.basic.button {
+  border: none !important;
+  box-shadow: none !important;
+}
+
+fuente {
+  font-family: 'Montserrat', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/*:::::Pie de Pagina*/
+.pie-pagina {
+  width: 100%;
+  background-color: #000000;
+}
+
+.pie-pagina .grupo-1 {
+  width: 100%;
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 50px;
+  padding: 45px 0px;
+}
+
+.pie-pagina .grupo-1 .box figure {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pie-pagina .grupo-1 .box figure img {
+  width: 250px;
+}
+
+.pie-pagina .grupo-1 .box h2 {
+  color: #fff;
+  margin-bottom: 25px;
+  font-size: 20px;
+}
+
+.pie-pagina .grupo-1 .box p {
+  color: #efefef;
+  margin-bottom: 10px;
+}
+
+.pie-pagina .grupo-1 .red-social a {
+  display: inline-block;
+  text-decoration: none;
+  width: 45px;
+  height: 45px;
+  line-height: 45px;
+  color: #fff;
+  margin-right: 10px;
+  background-color: #b59f14de;
+  text-align: center;
+  transition: all 300ms ease;
+}
+
+.pie-pagina .grupo-1 .red-social a:hover {
+  color: aqua;
+}
+
+.pie-pagina .grupo-2 {
+  background-color: #000000;
+  padding: 15px 10px;
+  text-align: center;
+  color: #fff;
+}
+
+.pie-pagina .grupo-2 small {
+  font-size: 15px;
+}
+
+
+/*#Carrito*/
+
+div.ui.menu{
+  align-items: flex-end;
+}
+
+div.item.resize{
+  width: 400px!important;
+  display: flex !important;
+}
+
+div div.menu.transition.visible{
+  width: 400px!important;
+  left: -200px!important;
+  min-height: 150px !important;
+  max-height: 400px !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+img.img-buycar{
+  max-width: 60px;
+  max-height: 60px;
+
+}
+
+.buycar-right{
+  display: flex !important;
+  flex-direction: column;
+}
+
+/*Fin Carrito*/
+
+@media screen and (max-width:800px) {
+  .pie-pagina .grupo-1 {
+    width: 90%;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 30px;
+    padding: 35px 0px;
+  }
+}
