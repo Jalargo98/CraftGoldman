@@ -1,5 +1,6 @@
 from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
+from uuid import uuid4
 
 # Create your models here.
 
@@ -32,10 +33,10 @@ class Producto(models.Model):
     porcentaje_iva = models.DecimalField(max_digits=3,decimal_places=1,help_text="Porcentaje del iva ej = 16 - 19 ...")
     oferta = models.DecimalField(max_digits=4,decimal_places=2,null=True)
     stock = models.IntegerField(help_text="Cantidad del producto en inventario")
+    imagen = models.ImageField()
     estado = models.BooleanField(default=True)
     def __str__(self) -> str:
         return f'{self.nombre} "{self.stock}" "{self.subcategoria.nombre}"'
-    
     class Meta:
         db_table = 'producto'
         

@@ -1,0 +1,63 @@
+{% extends "admin/layouts/base.html" %}
+{% load static %}
+{% block title %}Producto Create{% endblock title %}
+{% block main %}
+  <i class="bars icon"></i>
+  <h1 style="font-size: 50px;">Creacion de Productos</h1>
+  <div style="width: 100%;display: flex;flex-direction: column;align-content: center;">
+    <form class="ui form" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="two fields">
+        <div class="field">
+          <label for="">Nombre:</label>
+          <input type="text" required name="nombre" placeholder="Nombre del producto" maxlength="30" value="{% if producto %}{{producto.nombre}}{% endif %}">
+        </div>
+        <div class="field">
+          <label for="">Subcategoria:</label>
+          <select type="text" required name="subcategoria" placeholder="Subcategoria del producto" maxlength="40" value="{% if producto %}{{producto.subcategoria.id}}{% endif %}">
+            {% for subcat in subcategorias %}
+            <option value="{{subcat.id}}" {% if producto.subcategoria == subcat %}selected{% endif %}>{{subcat.nombre}}</option>            
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="field">
+        <label for="">Descripcion:</label>
+        <textarea required name="descripcion" placeholder="Descripcion del producto" maxlength="500" value="{% if producto %}{{producto.descripcion}}{% endif %}">{% if producto %}{{producto.descripcion}}{% endif %}</textarea>
+      </div>
+      <div class="four fields">
+        <div class="field">
+          <label for="">Precio:</label>
+          <input type="number" required name="precio" placeholder="precio del producto" maxlength="10" value="{% if producto %}{{producto.precio}}{% endif %}">
+        </div>
+        <div class="field">
+          <label for="">Porcentaje iva:</label>
+          <input type="number" required name="porcentaje_iva" placeholder="Porcentaje iva del producto" maxlength="3" value="{% if producto %}{{producto.porcentaje_iva}}{% endif %}">
+        </div>
+        <div class="field">
+          <label for="">Oferta:</label>
+          <input type="number" required name="oferta" placeholder="Oferta del producto" maxlength="4" value="{% if producto %}{{producto.oferta}}{% endif %}">
+        </div>
+        <div class="field">
+          <label for="">Stock:</label>
+          <input type="number" required name="stock" placeholder="Cantidad 'stock' del producto" maxlength="20" value="{% if producto %}{{producto.stock}}{% endif %}">
+        </div>
+      </div>
+      <div class="two fields">
+        <div class="field">
+          <label for="">Selecciona la imagen del producto:</label>
+          <input type="file" name="imagen" id="imagen" {% if producto %}value="{{producto.imagen.url}}"{% endif %}>
+          {% if producto %}
+          <img src="{{producto.imagen.url}}" alt="" style="width: 50px;height: auto;">
+          {% endif %}
+        </div>
+        <div class="field">
+          <label for="">Estado del producto:</label>
+          <input type="checkbox" name="estado" id="">
+        </div>
+      </div>
+      
+      <button class="ui button" type="submit">Submit</button>
+    </form>
+  </div>
+{% endblock main %}

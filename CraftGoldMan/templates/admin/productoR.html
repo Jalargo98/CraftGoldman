@@ -1,0 +1,44 @@
+{% extends "admin/layouts/base.html" %}
+{% load static %}
+{% block title %}Productos Lista{% endblock title %}
+{% block main %}
+<i class="bars icon"></i>
+<h1 style="font-size: 50px;">Ver lista de Productos</h1>
+<div style="width: 100%;display: flex;flex-direction: column;align-content: center;">
+  <table class="ui inverted yellow table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Subcategoria</th>
+        <th>Precio</th>
+        <th>Porcentaje IVA</th>
+        <th>Oferta</th>
+        <th>Stock</th>
+        <th>Estado</th>
+        <th>Modificar</th>
+      </tr>
+    </thead>
+    {% for producto in productos %}
+    <tbody>
+      <tr>
+        <td>{{producto.id}}</td>
+        <td>{{producto.nombre}}</td>
+        <td>{{producto.descripcion}}</td>
+        <td>{{producto.subcategoria}}</td>
+        <td>{{producto.precio}}</td>
+        <td>{{producto.porcentaje_iva}}</td>
+        <td>{{producto.oferta}}</td>
+        <td>{{producto.stock}}</td>
+        <td>{{producto.estado}}</td>
+        <td><a href="{% url 'admin:productoU' producto.id %}"><i class="pencil icon" style="color: white;"></i></a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+  <div style="text-align: center; width: 100%;margin-top: 60px;">
+    <button class="ui yellow button" onclick="window.location.href = '/admin/producto/create/';">Crear un producto</button>
+  </div>
+</div>
+{% endblock main %}

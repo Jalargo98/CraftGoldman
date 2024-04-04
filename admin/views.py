@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
-from Productos.models import Categoria,Subcategoria
+from Productos.models import Categoria,Subcategoria,Producto
 from django.core.exceptions import ObjectDoesNotExist
+from .forms import FormProducto
 
 # Create your views here.
 
@@ -83,3 +84,45 @@ def subcategoriaU(request,id_subcategoria):
   else:
     context = {'categorias':cat,'subcategoria':subcat}
     return render(request,'admin/subcategoriaC.html',context)
+  
+
+def productoC(request):
+    if request.method == 'POST':
+      form = FormProducto(request.POST, request.FILES)
+      if form.is_valid():
+        form.save()
+        return redirect('admin:productoR')
+      else:
+        print(form.errors)
+        subcat = Subcategoria.objects.all()
+        context = {'form': form, 'subcategorias': subcat}
+        return render(request, 'admin/productoC.html', context)
+    else:
+      subcat = Subcategoria.objects.all()
+      context = {'subcategorias': subcat}
+      return render(request, 'admin/productoC.html', context)
+
+def productoR(request):
+  prod = Producto.objects.all()
+  context = {'productos':prod}
+  return render(request,'admin/productoR.html',context)
+
+def productoU(request,id_producto):
+  try:
+    producto = Producto.objects.get(id=id_producto)
+    subcat = Subcategoria.objects.all()
+    form = FormProducto(request.POST,request.FILES, instance=producto)
+  except ObjectDoesNotExist:
+    return redirect('admin:productoR')
+  if request.method == "POST":
+    if form.is_valid():
+      form.save()
+      return redirect('admin:productoR')
+    else:
+      print(form.errors)
+      subcat = Subcategoria.objects.all()
+      context = {'form': form, 'subcategorias': subcat}
+      return render(request, 'admin/productoC.html', context)
+  else:
+    context = {'form': form,'producto':producto,'subcategorias':subcat}
+    return render(request,'admin/productoC.html',context)
