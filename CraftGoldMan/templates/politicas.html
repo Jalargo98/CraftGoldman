@@ -1,0 +1,72 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %}Nuestra mision{% endblock title %}
+{% block style %}
+<style>
+  .ui.container {
+    box-shadow: none !important;
+  }
+
+  .ui.container h2 {
+    text-align: justify;
+  }
+</style>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+{% endblock style %}
+{% block main %}
+<p style="font-size: 60px;margin-bottom: 0px;margin-top: 100px;">Politicas de la tienda</p>
+</div>
+<br><br><br><br>
+
+<div class="ui container">
+  <img class="ui centered medium image" src="{% static 'img/politicas/politica1.png' %}" alt="" width="20%" height="80px">
+  <h1>Transparencia y cuidado</h1>
+  <h2>Sabemos que la honestidad es la mejor politica en la industria de las compras
+    en linea. Es por eso que hemos diseñado politicas transparentes,
+    generosas y justar para todos nuestros clientes</h2>
+</div>
+<br><br><br><br>
+
+<div class="ui container">
+  <img class="ui centered medium image" src="{% static 'img/politicas/politica2.webp' %}" alt="" width="20%" height="80px">
+  <h1>Calidad y Satisfacción del Cliente</h1>
+  <h2>Calidad de Productos: Nos enorgullece ofrecer productos artesanales de alta calidad. Cada artículo es
+    cuidadosamente
+    inspeccionado antes del envío para garantizar tu satisfacción.
+    <br><br>
+    Seguridad en Línea: Utilizamos medidas de seguridad avanzadas para proteger tu información
+    durante el proceso de pago y en nuestra plataforma en línea.
+    <br><br><br><br>
+
+
+    <div class="ui container">
+      <img class="ui centered medium image" src="{% static 'img/politicas/politica3.png' %}" alt="" width="20%" height="80px">
+      <h1>Privacidad y Seguridad</h1>
+      <h2>Protección de Datos: Respetamos tu privacidad y protegemos tus datos personales.
+        No compartiremos tu información con terceros sin tu consentimiento.
+        <br><br>
+        Servicio al Cliente: Nuestro equipo de atención al cliente está disponible para ayudarte con cualquier
+        pregunta o inquietud que puedas tener. Siempre estamos aquí para brindarte asistencia y resolver cualquier
+        problema
+      </h2>
+    </div>
+    <br><br><br><br>
+
+
+    <div class="ui container">
+      <img class="ui centered medium image" src="{% static 'img/politicas/politica4.png' %}" alt="" width="20%" height="80px">
+      <h1>Devoluciones y Reembolsos</h1>
+      <h2>Política de Devoluciones: Aceptamos devoluciones dentro de los 30 días posteriores a la entrega del producto.
+        El producto debe estar en su estado original y sin usar.
+        Los gastos de envío de devolución corren por cuenta del comprador.
+        <br><br>
+        Reembolsos: Procesaremos los reembolsos dentro de los 7 días posteriores a la recepción de la devolución.
+        El reembolso se realizará a través del mismo método de pago utilizado para la compra.
+      </h2>
+    </div>
+    {% endblock main %}
+    {% block scripts %}
+    <script src="{% static 'js/script.js' %}"></script>
+    {% endblock scripts %}

@@ -1,0 +1,69 @@
+{% extends "layouts/base.html" %}
+{% load static %}
+{% block title %}Nuestra mision{% endblock title %}
+{% block style %}
+<style>
+  .ui.container{
+    box-shadow: none!important;
+  }
+  .ui.container h2{
+    text-align: justify;
+  }
+</style>
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+{% endblock style %}
+{% block main %}
+<div style="text-align: center; margin-top: 100px;">
+  <p style="font-size: 60px;margin-bottom: 40px;">Nuestra mision en Craftsman Gold</p>
+  <br>
+  <p style="font-size: 30px;margin-bottom: 40px;">Lo que esperamos lograr</p>
+</div>
+
+<div class="ui container">
+      <img  class="ui centered medium image" src="{% static 'img/mision_tienda/conectar.png' %}" alt="" width="20%" height="80px">  
+      <h1>conectar</h1>
+      <h2>En Craftsman Gold nos dedicamos a conectar comunidades y promover el valor de los productos artesanales. 
+          Nuestro objetivo es apoyar a los artesanos locales y crear lazos sólidos entre las personas a través de la belleza y
+          autenticidad de sus creaciones. Trabajamos para impulsar el reconocimiento 
+          y el impacto positivo de la artesanía tradicional en nuestras vidas.</h2>
+</div>
+<br><br><br>
+
+<div class="ui container">
+     <img  class="ui centered medium image" src="{% static 'img/mision_tienda/motivar.png' %}" alt="" width="20%" height="80px">  
+     <h1>motivar</h1>
+     <h2>Mediante nuestras iniciativas buscamos acortar la brecha entre
+         el mercado en linea y el trabajo de nuestros artesanos
+         con el objetivo de alcanzar la independencia financiera.</h2>
+</div>
+<br><br><br>
+
+<div class="ui container">
+     <img  class="ui centered medium image" src="{% static 'img/mision_tienda/mision1.jpg' %}" alt="" width="20%" height="80px">  
+     <h1> Celebrar la Diversidad Cultural</h1>
+     <h2>Buscamos artesanías de diversas culturas y comunidades, 
+         honrando la riqueza y la singularidad de cada tradición artesanal.</h2>
+</div>
+<br><br><br>
+
+<div class="ui container">
+     <img  class="ui centered medium image" src="{% static 'img/mision_tienda/mision2.jpg' %}" alt="" width="20%" height="80px">  
+     <h1>Inspirar Creatividad</h1>
+     <h2>Deseamos inspirar a otros a explorar su propia creatividad y 
+         apreciar el valor del trabajo artesanal en un mundo cada vez más digital.</h2>
+</div>
+<br><br><br>
+
+<div class="ui container">
+     <img  class="ui centered medium image" src="{% static 'img/mision_tienda/mision3.jpg' %}" alt="" width="20%" height="80px">  
+     <h1>Fomentar la Sostenibilidad</h1>
+     <h2>Valoramos el uso de materiales sostenibles y técnicas respetuosas 
+         con el medio ambiente en la creación de nuestras artesanías, 
+         contribuyendo así a un mundo más sostenible</h2>
+</div>
+{% endblock main %}
+{% block scripts %}
+<script  src="{% static 'js/script.js' %}"></script>
+{% endblock scripts %}

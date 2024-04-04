@@ -23,4 +23,6 @@ urlpatterns = [
     path('', index, name='index'),
     path('producto/',include(('Productos.urls','product'),namespace='product'), name="product"),
     path('autenticacion/', autenticacion, name="autenticacion"),
+    path('mision/', mision, name="mision"),
+    path('politicas',politicas,name="politicas"),
 ]

@@ -8,3 +8,9 @@ def index(request):
 
 def autenticacion(request):
   return render(request, 'autenticacion.html', {})
+
+def mision(request):
+  return render(request, 'mision.html', {})
+
+def politicas(request):
+  return render(request, 'politicas.html', {})
