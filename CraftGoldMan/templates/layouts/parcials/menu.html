@@ -23,9 +23,11 @@
       {{user.first_name}}
       <i class="dropdown icon"></i>
       <div class="menu">
-        <div class="item">Choice 1</div>
-        <div class="item">Choice 2</div>
-        <div class="item">Choice 3</div>
+        {% if user.is_superuser %}
+        <div class="item">Dashboard Admin</div>
+        {% endif %}
+        <div class="item">Configuracion de cuenta</div>
+        <a class="item" href="/logout/">Cerrar Sesion</a>
       </div>
     </div>
   </div>

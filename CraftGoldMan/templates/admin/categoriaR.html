@@ -1,0 +1,32 @@
+{% extends "admin/layouts/base.html" %}
+{% load static %}
+{% block title %}Categoria Create{% endblock title %}
+{% block main %}
+<i class="bars icon"></i>
+<h1 style="font-size: 50px;">Creacion de Categoria</h1>
+<div style="width: 100%;display: flex;flex-direction: column;align-content: center;">
+  <table class="ui inverted yellow table">
+    <thead>
+      <tr>
+        <th>id</th>
+        <th>Nombre</th>
+        <th>Descripcion</th>
+        <th>Modificar</th>
+      </tr>
+    </thead>
+    {% for cat in categorias %}
+    <tbody>
+      <tr>
+        <td>{{cat.id}}</td>
+        <td>{{cat.nombre}}</td>
+        <td>{{cat.descripcion}}</td>
+        <td><a href="{% url 'admin:categoriaU' cat.id %}"><i class="pencil icon" style="color: white;"></i></a></td>
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+  <div style="text-align: center; width: 100%;margin-top: 60px;">
+    <button class="ui yellow button" onclick="window.location.href = '/admin/categoria/create/';">Crear una categoria</button>
+  </div>
+</div>
+{% endblock main %}

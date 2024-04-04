@@ -17,15 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from . views import *
-from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('', index, name='index'),
-    path('producto/',include(('Productos.urls','product'),namespace='product'), name="product"),
-    path('admin/',include(('admin.urls','admin'),namespace='admin'), name="admin"),
-    path('autenticacion/', autenticacion, name="autenticacion"),
-    path('registro/', registro, name="registro"),
-    path('mision/', mision, name="mision"),
-    path('politicas',politicas,name="politicas"),
-    path('logout/', auth_views.LogoutView.as_view(next_page='autenticacion'), name='logout'),
+    path('categoria/create/', categoriaC, name='categoriaC'),
+    path('categoria/ver/', categoriaR, name='categoriaR'),
+    path('categoria/update/<int:id_categoria>', categoriaU, name='categoriaU'),
+    path('subcategoria/create/', index, name='subcategoriaC'),
+    path('subcategoria/ver/', index, name='subcategoriaR'),
+    path('subcategoria/update/<int:id_subcategoria>', index, name='subcategoriaU'),
+    path('producto/create/', index, name='productoC'),
+    path('producto/ver/', index, name='productoR'),
+    path('producto/update/<int:id_producto>', index, name='productoU'),
 ]

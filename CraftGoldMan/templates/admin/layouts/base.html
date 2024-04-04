@@ -1,0 +1,57 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/semantic.css' %}">
+  <script src="{% static 'js/code.jquery.com_jquery-3.1.1.min.js' %}"></script>
+  <script src="{% static 'js/semantic.js' %}"></script>
+  <title>{% block title %}{% endblock title %}</title>
+</head>
+<style>
+  .active-menu{
+    left: 0px!important;
+  }
+  .menu-left{
+    background-color: white;
+    position: fixed;
+    z-index: 5;
+    left: -350px;
+    transition: left 2s ease-in-out
+  }
+  .contenido{
+    width: 70%;
+    margin: 30px auto 0;
+    position: sticky;
+    z-index: 0;
+  }
+</style>
+<body>
+  <section id="menuLeft" class="menu-left" style="width: 250px;height: 100%;">
+    {% include "admin/layouts/parcials/menu.html" %}
+  </section>
+  <section class="contenido">
+    <main>
+      {% block main %}
+        
+      {% endblock main %}
+    </main>
+  </section>  
+<script>
+  var menuIzquierda = $('#menuLeft');
+  var iconClose = $('.icon.close');
+  var iconBars = $('.bars.icon')
+  iconClose.click(function(){
+    menuIzquierda.removeClass('active-menu');
+  });
+  iconBars.click(function(){
+    menuIzquierda.addClass('active-menu');
+  })
+
+</script>
+{% block script %}
+  
+{% endblock script %}
+</body>
+</html>
