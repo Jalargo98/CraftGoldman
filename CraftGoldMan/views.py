@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from Productos.models import CustomUser as User
+from Productos.models import Producto
 
 # Create your views here.
 
 def index(request):
-  return render(request, 'index.html', {})
-  pass
+  producto = Producto.objects.all()
+  return render(request, 'index.html', {'productos':producto})
 
 def autenticacion(request):
   if request.method == 'POST':

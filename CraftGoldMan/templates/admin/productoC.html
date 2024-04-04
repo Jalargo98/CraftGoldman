@@ -32,11 +32,11 @@
         </div>
         <div class="field">
           <label for="">Porcentaje iva:</label>
-          <input type="number" required name="porcentaje_iva" placeholder="Porcentaje iva del producto" maxlength="3" value="{% if producto %}{{producto.porcentaje_iva}}{% endif %}">
+          <input type="number" required name="porcentaje_iva" placeholder="Porcentaje iva del producto" max="99" maxlength="3" value="{% if producto %}{{producto.porcentaje_iva}}{% endif %}">
         </div>
         <div class="field">
           <label for="">Oferta:</label>
-          <input type="number" required name="oferta" placeholder="Oferta del producto" maxlength="4" value="{% if producto %}{{producto.oferta}}{% endif %}">
+          <input type="number" required name="oferta" placeholder="Oferta del producto" maxlength="4" max="99" value="{% if producto %}{{producto.oferta}}{% endif %}">
         </div>
         <div class="field">
           <label for="">Stock:</label>
@@ -53,7 +53,7 @@
         </div>
         <div class="field">
           <label for="">Estado del producto:</label>
-          <input type="checkbox" name="estado" id="">
+          <input type="checkbox" name="estado" id="" {% if producto %}{% if producto.estado %}checked{% endif %}{% endif %}>
         </div>
       </div>
       

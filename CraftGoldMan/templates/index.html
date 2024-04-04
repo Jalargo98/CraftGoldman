@@ -2,102 +2,82 @@
 {% load static %}
 {% block title %}Inicio{% endblock title %}
 {% block style %}
-  <link rel="stylesheet" href="{% static 'css/inicio.css' %}">
+<link rel="stylesheet" href="{% static 'css/inicio.css' %}">
 {% endblock style %}
 {% block main %}
-    <div class="ui grid">
-      <div class="eight wide column" style="text-align: center;">
-          <p style="color: rgb(251, 162, 0);font-size: 63px;">BIENVENIDO A CRAFTSMAN GOLD</p>
-          <p style="font-size: 20px;">Inspirados por la gente y su trabajo</p><br>
-          <p style="font-size: 20px;">En craftsman gold promovemos el comercio justo mediante materiales sustentables y el arte tradicional de nuestras comunidades locales.
-           Conoce nuestras piezas de moda originales llenas de riqueza cultural</p> <br><br><br>
-      </div>
+<div class="ui grid">
+    <div class="eight wide column" style="text-align: center;">
+        <p style="color: rgb(251, 162, 0);font-size: 63px;">BIENVENIDO A CRAFTSMAN GOLD</p>
+        <p style="font-size: 20px;">Inspirados por la gente y su trabajo</p><br>
+        <p style="font-size: 20px;">En craftsman gold promovemos el comercio justo mediante materiales sustentables y el
+            arte tradicional de nuestras comunidades locales.
+            Conoce nuestras piezas de moda originales llenas de riqueza cultural</p> <br><br><br>
+    </div>
 
-      <div class="eight wide column"
-      style="background-image: url({% static 'img/inicio/artesano_inicio.jpg' %});background-size: cover;">
-      </div>
-      
-     
+    <div class="eight wide column"
+        style="background-image: url({% static 'img/inicio/artesano_inicio.jpg' %});background-size: cover;">
+    </div>
+
+
 </div>
 <br><br><br>
 
 <section class="ui container">
-      <h2 class="ui header">Productos Recomendados</h2>
-
-      <div class="ui four cards">
-          <div class="ui card">
-              <div class="image">
-                  <img src="imagenes/tienda/blusas_mujer/blusa1.webp" alt="Producto 1">
-              </div>
-              <div class="content">
-                  <a class="header">Sol naciente</a>
-                  <div class="meta">Categoria: Blusas</div>
-                  <div class="description">
-                  amisa de seda con bordado de colores en hilo 
-                  </div>
-              </div>
-              <div class="extra content">
-                  <span class="price">$30000 COP</span>
-                  <button class="ui yellow button">agregar al carrito</button>
-                  <input type="number" name="cantidad" min="1" max="100" style="height: 40px;">
-              </div>
-          </div>
-
-          <div class="ui card">
-              <div class="image">
-                  <img src="imagenes/tienda/bolsos/bolso2.webp" alt="Producto 2">
-              </div>
-              <div class="content">
-                  <a class="header">Lluvia de cultura</a>
-                  <div class="meta">Categoria: Bolsos</div>
-                  <div class="description">
-                  bolso de lana , representando la alegria y el arte de la ciudad de cartagena
-                  </div>
-              </div>
-              <div class="extra content">
-                  <span class="price">$24999 COP</span>
-                  <button class="ui yellow button">agregar al carrito</button>
-                  <input type="number" name="cantidad" min="1" max="100" style="height: 40px;">
-              </div>
-          </div>
-
-          <div class="ui card">
-              <div class="image">
-                  <img src="imagenes/tienda/sombreros/sombrero3.jpg" alt="Producto 3">
-              </div>
-              <div class="content">
-                  <a class="header">Pasion </a>
-                  <div class="meta">Categoria: Sombreros</div>
-                  <div class="description">
-                  Sombrero de caña rojo y blanco
-                  </div>
-              </div>
-              <div class="extra content">
-                  <span class="price">$33800 COP</span>
-                  <button class="ui yellow button">agregar al carrito</button>
-                  <input type="number" name="cantidad" min="1" max="100" style="height: 40px;">
-              </div>
-          </div>
-
-          <div class="ui card">
-              <div class="image">
-                  <img src="imagenes/tienda/joyeria/anillo_2.jpg" alt="Producto 3">
-              </div>
-              <div class="content">
-                  <a class="header">Vuelo de los andes</a>
-                  <div class="meta">Categoria: Joyeria</div>
-                  <div class="description">
-                  majestuoso y elegante anillo de acero inspirado en el ave nacional , el condor de los andes
-                  </div>
-              </div>
-              <div class="extra content">
-                  <span class="price">$39800 COP</span>
-                  <button class="ui yellow button">agregar al carrito</button>
-                  <input type="number" name="cantidad" min="1" max="100" style="height: 40px;">
-              </div>
-          </div>
-
-      </div>
-  </section>
-  <br><br>
+    <h2 class="ui header">Productos Recomendados</h2>
+    <div class="ui four cards">
+        {% for product in productos %}
+        {% if forloop.counter < 5 %} 
+        <div class="ui card">
+            <div class="image">
+                <img src="{{product.imagen.url}}" alt="Producto 1" style="height: 290px;">
+            </div>
+            <div class="content">
+                <a class="header">{{product.nombre}}</a>
+                <div class="meta">Categoria: {{product.subcategoria.categoria.nombre}}</div>
+                <div class="description">
+                    {{product.descripcion}}
+                </div>
+            </div>
+            <div class="extra content" style="display: flex;align-items: center;">
+                <span class="price">${{product.precio}} COP</span>
+                <button class="ui yellow button" onclick="agregarCarrito(event)" data-id="{{product.id}}">agregar al carrito</button>
+                <input type="number" name="cantidad" min="1" max="100" style="height: 40px; width: 20%;">
+            </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+    </div>
+</section>
+<br><br>
 {% endblock main %}
+{% block scripts %}
+<script>
+    function agregarCarrito(event){
+      var boton = $(event.target);
+      var id_producto = boton.data('id');
+      var cantidad = $(boton.closest('.extra.content').find('input')[0]).val();
+      if(cantidad == null || cantidad < 1){
+        cantidad = 1
+      }
+      console.log(`${id_producto} ${cantidad}`)
+      $.ajax({
+          url: '/producto/tienda/carrito',
+          data: {
+              'id_producto': id_producto,
+              'cantidad': cantidad
+          },
+          dataType: 'json',
+          success: function (data) {
+              if(data.message == 'success'){
+                console.log('agregamos')
+              }else{
+                console.log(data.message)
+              }
+          },
+          error: function (xhr, textStatus, errorThrown) {
+              console.log(errorThrown)
+          }
+      });
+    }
+  </script>
+{% endblock scripts %}

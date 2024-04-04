@@ -10,29 +10,62 @@
 <div class="ui container">
   <div class="ui three stackable cards">
     <!--Aqii comienza el for de los productos -->
-    <div class="card">
-      <div class="image">
-        <img src="{% static 'img/tienda/bolsos/bolso1.avif' %}" width="180%">
-      </div>
-      <div class="content">
-        <a class="header"> Corazon Inca</a>
-        <div class="meta">
-          <span class="date">Categoría: Bolso</span>
+    {% if productos %}
+      {% for producto in productos %}
+      <div class="card">
+        <div class="image">
+          <img src="{{producto.imagen.url}}" style="width: 100%; height: 280px;">
         </div>
-        <div class="description">
-          Hermoso bolso de paja con esencia de la cultura inca
+        <div class="content">
+          <a class="header">{{producto.nombre}}</a>
+          <div class="meta">
+            <span class="date">Categoría:{{producto.subcategoria.categoria.nombre}}</span>
+          </div>
+          <div class="description">
+            {{producto.descripcion}}
+          </div>
+        </div>
+        <div class="extra content" style="display: flex;align-items: center;">
+          <span class="price">${{producto.precio}} COP</span>
+          <button class="ui yellow button" onclick="agregarCarrito(event)" data-id="{{producto.id}}">agregar al carrito</button>
+          <input type="number" name="cantidad" min="1" max="100" style="height: 40px; width: 20%;">
         </div>
       </div>
-      <div class="extra content">
-        <span class="price">$20000 COP</span>
-        <button class="ui yellow button">agregar al carrito</button>
-        <input type="number" name="cantidad" min="1" max="100" style="height: 40px; width: 20%;">
-      </div>
-    </div>
+      {% endfor %}
+    {% endif %}
     <!--Aqii finaliza el for de los productos -->
   </div>
 </div>
 {% endblock main %}
 {% block scripts %}
 <script  src="{% static 'js/script.js' %}"></script>
+<script>
+  function agregarCarrito(event){
+    var boton = $(event.target);
+    var id_producto = boton.data('id');
+    var cantidad = $(boton.closest('.extra.content').find('input')[0]).val();
+    if(cantidad == null || cantidad < 1){
+      cantidad = 1
+    }
+    console.log(`${id_producto} ${cantidad}`)
+    $.ajax({
+        url: '/producto/tienda/carrito',
+        data: {
+            'id_producto': id_producto,
+            'cantidad': cantidad
+        },
+        dataType: 'json',
+        success: function (data) {
+            if(data.message == 'success'){
+              console.log('agregamos')
+            }else{
+              console.log(data.message)
+            }
+        },
+        error: function (xhr, textStatus, errorThrown) {
+            console.log(errorThrown)
+        }
+    });
+  }
+</script>
 {% endblock scripts %}

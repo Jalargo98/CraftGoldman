@@ -20,4 +20,5 @@ from . views import *
 
 urlpatterns = [
     path('tienda', tienda, name='tienda'),
+    path('tienda/carrito', tienda_carrito,name='tienda_carrito'),
 ]

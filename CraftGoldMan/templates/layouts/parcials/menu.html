@@ -24,9 +24,8 @@
       <i class="dropdown icon"></i>
       <div class="menu">
         {% if user.is_superuser %}
-        <div class="item">Dashboard Admin</div>
+        <div class="item" onclick="window.location.href = '/admin/';">Dashboard Admin</div>
         {% endif %}
-        <div class="item">Configuracion de cuenta</div>
         <a class="item" href="/logout/">Cerrar Sesion</a>
       </div>
     </div>
@@ -42,57 +41,21 @@
     <div class="ui icon top left pointing dropdown button" style="background-color: transparent!important">
       <i class="shopping cart icon"></i>
       <div class="menu" style="min-width: 280px;">
-        <div class="item resize">
-          <div class="buycar-left">
-            <img class="img-buycar" src="{% static 'img/mision_tienda/motivar.png' %}" alt="">
+        {% for id_producto, producto in request.session.carrito.items %}
+          <div class="item resize">
+            <div class="buycar-left">
+              <img class="img-buycar" src="{{ producto.imagen }}" alt="">
+            </div>
+            <div class="buycar-right" data-total="{{ producto.total }}" style="width: 150px; max-width: 180px;">
+              <span style="font-size: larger;">{{ producto.nombre }}</span>
+              <span style="font-size: medium;">{{ producto.descripcion }}</span>
+              <span style="font-size: medium;">{{ producto.precio }}</span>
+              <span style="font-size: medium;">{{ producto.cantidad }}</span>
+              <span style="font-size: medium;">{{ producto.total }}</span>
+            </div>
           </div>
-          <div class="buycar-right">
-            <span>Nombre producto</span>
-            <span>Descripcion producto</span>
-            <span>precio producto</span>
-          </div>
-        </div>
-        <div class="item resize">
-          <div class="buycar-left">
-            <img class="img-buycar" src="{% static 'img/mision_tienda/motivar.png' %}" alt="">
-          </div>
-          <div class="buycar-right">
-            <span>Nombre producto</span>
-            <span>Descripcion producto</span>
-            <span>precio producto</span>
-          </div>
-        </div>
-        <div class="item resize">
-          <div class="buycar-left">
-            <img class="img-buycar" src="{% static 'img/mision_tienda/motivar.png' %}" alt="">
-          </div>
-          <div class="buycar-right">
-            <span>Nombre producto</span>
-            <span>Descripcion producto</span>
-            <span>precio producto</span>
-          </div>
-        </div>
-        <div class="item resize">
-          <div class="buycar-left">
-            <img class="img-buycar" src="{% static 'img/mision_tienda/motivar.png' %}" alt="">
-          </div>
-          <div class="buycar-right">
-            <span>Nombre producto</span>
-            <span>Descripcion producto</span>
-            <span>precio producto</span>
-          </div>
-        </div>
-        <div class="item resize">
-          <div class="buycar-left">
-            <img class="img-buycar" src="{% static 'img/mision_tienda/motivar.png' %}" alt="">
-          </div>
-          <div class="buycar-right">
-            <span>Nombre producto</span>
-            <span>Descripcion producto</span>
-            <span>precio producto</span>
-          </div>
-        </div>
-
+        {% endfor %}
+        
         <div class="item resize active selected">
           Aqui va el ver mas
         </div>
