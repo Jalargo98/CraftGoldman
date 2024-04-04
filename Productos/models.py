@@ -1,3 +1,4 @@
+from django.contrib.auth.models import AbstractUser, Group, Permission
 from django.db import models
 
 # Create your models here.
@@ -37,3 +38,8 @@ class Producto(models.Model):
     
     class Meta:
         db_table = 'producto'
+        
+class CustomUser(AbstractUser):
+    telefono = models.CharField(max_length=20, blank=True, null=True)
+    groups = models.ManyToManyField(Group, related_name='customuser_set', blank=True, help_text='The groups this user belongs to. A user will get all permissions granted to each of their groups.')
+    user_permissions = models.ManyToManyField(Permission, related_name='customuser_set', blank=True, help_text='Specific permissions for this user.')
